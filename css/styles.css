@@ -1,14 +1,17 @@
 header {
   background-color: rgb(82, 0, 118);
   color: white;
-  padding: 1px;
   height: 50px;
-  display: flex;
-  align-items: center;
+  font-size: 14px;
+}
+
+.form-title {
+  font-size: 30px;
 }
 
 img {
   width: 100%;
+  height: 100%;
 }
 
 .user-input {
@@ -30,6 +33,7 @@ textarea {
 
 .label {
   height: 1.8rem;
+  margin-top: 1rem;
 }
 
 button {
@@ -40,6 +44,8 @@ button {
   width: 5rem;
 }
 
-.submit {
+#submit {
+  display: flex;
   justify-content: flex-end;
+  margin: 1rem 0;
 }
