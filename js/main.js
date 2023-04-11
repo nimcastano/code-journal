@@ -7,8 +7,6 @@ $photoUrl.addEventListener('input', e => {
 
 const $form = document.querySelector('#entry-form');
 
-// console.log($form.elements);
-
 $form.addEventListener('submit', e => {
   e.preventDefault();
 
