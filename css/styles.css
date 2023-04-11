@@ -1,0 +1,51 @@
+header {
+  background-color: rgb(82, 0, 118);
+  color: white;
+  height: 50px;
+  font-size: 14px;
+}
+
+.form-title {
+  font-size: 30px;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+.user-input {
+  margin: 1rem 0;
+}
+
+input,
+#notes {
+  width: 100%;
+}
+
+input {
+  height: 2rem;
+}
+
+textarea {
+  height: 8em;
+}
+
+.label {
+  height: 1.8rem;
+  margin-top: 1rem;
+}
+
+button {
+  background-color: rgb(82, 0, 118);
+  color: white;
+  border-radius: 5px;
+  height: 2rem;
+  width: 5rem;
+}
+
+#submit {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem 0;
+}
