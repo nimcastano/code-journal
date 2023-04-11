@@ -5,26 +5,6 @@ $photoUrl.addEventListener('input', e => {
   $img.setAttribute('src', e.target.value);
 });
 
-const $form = document.querySelector('#entry-form');
-
-$form.addEventListener('submit', e => {
-  e.preventDefault();
-
-  const inputObj = {
-    title: $form.elements.title.value,
-    photoUrl: $form.elements[1].value,
-    notes: $form.elements.notes.value,
-    entryId: data.nextEntryId
-  };
-
-  data.nextEntryId++;
-  data.entries.unshift(inputObj);
-
-  $img.setAttribute('src', 'images/placeholder-image-square.jpg');
-
-  $form.reset();
-});
-
 const renderEntry = entry => {
   const $li = document.createElement('li');
 
@@ -69,12 +49,67 @@ document.addEventListener('DOMContentLoaded', e => {
   }
 });
 
-// const $noEntries = document.querySelector('.no-entry');
+const $noEntries = document.querySelector('.no-entry');
 
-// const toggleNoEntries = () => {
-//   if ($noEntries.className === 'no-entry') {
-//     $noEntries.classList.add('hidden');
-//   } else {
-//     $noEntries.className = 'no-entry';
-//   }
-// };
+const toggleNoEntries = () => {
+  if ($noEntries.className === 'no-entry') {
+    $noEntries.classList.add('hidden');
+  } else {
+    $noEntries.className = 'no-entry';
+  }
+};
+
+const $dataViews = document.querySelectorAll('.view');
+
+const viewSwap = view => {
+  for (let i = 0; i < $dataViews.length; i++) {
+    if ($dataViews[i].getAttribute('data-view') === view) {
+      $dataViews[i].className = 'view';
+    } else {
+      $dataViews[i].className = 'view hidden';
+    }
+  }
+  data.view = view;
+};
+
+const $entriesAnchor = document.querySelector('.entries-anchor');
+
+$entriesAnchor.addEventListener('click', e => {
+  viewSwap('entries');
+});
+
+const $entryFormAnchor = document.querySelector('.entry-form-anchor');
+
+$entryFormAnchor.addEventListener('click', e => {
+  viewSwap('entry-form');
+});
+
+const $form = document.querySelector('#entry-form');
+
+$form.addEventListener('submit', e => {
+  e.preventDefault();
+
+  const inputObj = {
+    title: $form.elements.title.value,
+    photoUrl: $form.elements[1].value,
+    notes: $form.elements.notes.value,
+    entryId: data.nextEntryId
+  };
+
+  data.nextEntryId++;
+  data.entries.unshift(inputObj);
+
+  const $newEntry = renderEntry(inputObj);
+
+  $ul.prepend($newEntry);
+
+  viewSwap('entries');
+
+  if (!data.entries.length) {
+    toggleNoEntries();
+  }
+
+  $img.setAttribute('src', 'images/placeholder-image-square.jpg');
+
+  $form.reset();
+});

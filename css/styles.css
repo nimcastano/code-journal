@@ -1,8 +1,12 @@
+* {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+
 header {
   background-color: rgb(82, 0, 118);
   color: white;
   height: 50px;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .form-title {
@@ -71,4 +75,13 @@ li {
 
 .no-entry {
   text-align: center;
+}
+
+a {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+a:hover {
+  cursor: pointer;
 }
