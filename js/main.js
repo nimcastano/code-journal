@@ -68,3 +68,13 @@ document.addEventListener('DOMContentLoaded', e => {
     $ul.appendChild($child);
   }
 });
+
+// const $noEntries = document.querySelector('.no-entry');
+
+// const toggleNoEntries = () => {
+//   if ($noEntries.className === 'no-entry') {
+//     $noEntries.classList.add('hidden');
+//   } else {
+//     $noEntries.className = 'no-entry';
+//   }
+// };
