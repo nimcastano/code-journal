@@ -47,6 +47,12 @@ document.addEventListener('DOMContentLoaded', e => {
     const $child = renderEntry(data.entries[i]);
     $ul.appendChild($child);
   }
+
+  viewSwap(data.view);
+
+  if (data.entrieslength === 0) {
+    toggleNoEntries();
+  }
 });
 
 const $noEntries = document.querySelector('.no-entry');
@@ -105,7 +111,7 @@ $form.addEventListener('submit', e => {
 
   viewSwap('entries');
 
-  if (!data.entries.length) {
+  if (data.entries.length !== 0) {
     toggleNoEntries();
   }
 
