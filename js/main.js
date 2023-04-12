@@ -7,6 +7,7 @@ $photoUrl.addEventListener('input', e => {
 
 const renderEntry = entry => {
   const $li = document.createElement('li');
+  $li.setAttribute('data-entry-id', entry.entryId);
 
   const $div1 = document.createElement('div');
   $div1.setAttribute('class', 'row');
