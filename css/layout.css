@@ -18,17 +18,35 @@
   width: 100%;
 }
 
+#entries-title,
+#new-entries-button {
+  width: 50%;
+}
+
+#navbar {
+  align-items: center;
+}
+
+.column-third {
+  width: calc(100% / 3);
+}
+
 @media screen and (min-width: 768px) {
   .container {
     max-width: 900px;
   }
 
   .column-full,
-  .column-half {
+  .column-half,
+  .column-third {
     padding: 0 0.75rem;
   }
 
   .column-half {
     width: 50%;
+  }
+
+  .column-third {
+    width: 15.9%;
   }
 }

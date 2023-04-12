@@ -1,8 +1,12 @@
+* {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+
 header {
   background-color: rgb(82, 0, 118);
   color: white;
   height: 50px;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .form-title {
@@ -12,6 +16,7 @@ header {
 img {
   width: 100%;
   height: 100%;
+  border-radius: 5px;
 }
 
 .user-input {
@@ -48,4 +53,35 @@ button {
   display: flex;
   justify-content: flex-end;
   margin: 1rem 0;
+}
+
+#entries-header {
+  align-items: center;
+}
+
+#new-entries-button {
+  text-align: right;
+}
+
+ul {
+  list-style-type: none;
+  width: 100%;
+  padding-left: 0;
+}
+
+li {
+  margin-bottom: 2rem;
+}
+
+.no-entry {
+  text-align: center;
+}
+
+a {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+a:hover {
+  cursor: pointer;
 }
