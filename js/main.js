@@ -28,13 +28,22 @@ const renderEntry = entry => {
 
   $div1.appendChild($div2b);
 
+  const $div3 = document.createElement('div');
+  $div3.setAttribute('id', 'name-edit');
+
+  $div2b.appendChild($div3);
+
   const $h2 = document.createElement('h2');
   $h2.textContent = entry.title;
+
+  const $faPencil = document.createElement('i');
+  $faPencil.className = 'fa fa-pencil';
 
   const $p = document.createElement('p');
   $p.textContent = entry.notes;
 
-  $div2b.appendChild($h2);
+  $div3.appendChild($h2);
+  $div3.appendChild($faPencil);
   $div2b.appendChild($p);
 
   return $li;
