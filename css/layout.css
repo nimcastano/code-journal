@@ -31,6 +31,13 @@
   width: calc(100% / 3);
 }
 
+#name-edit {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 @media screen and (min-width: 768px) {
   .container {
     max-width: 900px;
@@ -47,6 +54,6 @@
   }
 
   .column-third {
-    width: 15.9%;
+    width: 17%;
   }
 }
