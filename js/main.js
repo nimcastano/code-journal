@@ -129,3 +129,28 @@ $form.addEventListener('submit', e => {
 
   $form.reset();
 });
+
+$ul.addEventListener('click', e => {
+  if (e.target.tagName === 'I') {
+    const $closest = e.target.closest('li');
+    let $dataEntryId = $closest.getAttribute('data-entry-id');
+    $dataEntryId = Number($dataEntryId);
+
+    viewSwap('entry-form');
+
+    const $formTitle = document.querySelector('.form-title');
+    $formTitle.textContent = 'Edit Entry';
+
+    for (let i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].entryId === $dataEntryId) {
+        data.editing = data.entries[i];
+
+        document.querySelector('#title').value = data.entries[i].title;
+        document.querySelector('#photo-url').value = data.entries[i].photoUrl;
+        document.querySelector('#notes').value = data.entries[i].notes;
+
+        break;
+      }
+    }
+  }
+});
