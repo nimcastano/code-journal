@@ -103,21 +103,47 @@ $entryFormAnchor.addEventListener('click', e => {
 const $form = document.querySelector('#entry-form');
 
 $form.addEventListener('submit', e => {
+
   e.preventDefault();
 
-  const inputObj = {
-    title: $form.elements.title.value,
-    photoUrl: $form.elements[1].value,
-    notes: $form.elements.notes.value,
-    entryId: data.nextEntryId
-  };
+  if (data.editing === null) {
 
-  data.nextEntryId++;
-  data.entries.unshift(inputObj);
+    const inputObj = {
+      title: $form.elements.title.value,
+      photoUrl: $form.elements[1].value,
+      notes: $form.elements.notes.value,
+      entryId: Number(data.nextEntryId)
+    };
 
-  const $newEntry = renderEntry(inputObj);
+    data.nextEntryId++;
+    data.entries.unshift(inputObj);
 
-  $ul.prepend($newEntry);
+    const $newEntry = renderEntry(inputObj);
+
+    $ul.prepend($newEntry);
+
+  } else {
+
+    const inputObj = {
+      title: $form.elements.title.value,
+      photoUrl: $form.elements[1].value,
+      notes: $form.elements.notes.value,
+      entryId: Number(data.editing.entryId)
+    };
+
+    const dataEntriesIndex = data.entries.length - data.editing.entryId;
+
+    data.entries[dataEntriesIndex] = inputObj;
+
+    const $newLi = renderEntry(inputObj);
+
+    $ul.replaceChild($newLi, $ul.childNodes[dataEntriesIndex]);
+
+    const $formTitle = document.querySelector('.form-title');
+    $formTitle.textContent = 'New Entry';
+
+    data.editing = null;
+  }
 
   viewSwap('entries');
 
