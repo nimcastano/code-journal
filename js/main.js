@@ -55,10 +55,10 @@ const $ul = document.querySelector('ul');
 const $noEntries = document.querySelector('.no-entry');
 
 const toggleNoEntries = () => {
-  if ($noEntries.className === 'no-entry') {
-    $noEntries.className = 'no-entry hidden';
-  } else {
+  if (data.entries.length === 0) {
     $noEntries.className = 'no-entry';
+  } else {
+    $noEntries.className = 'no-entry hidden';
   }
 };
 
@@ -70,9 +70,7 @@ document.addEventListener('DOMContentLoaded', e => {
 
   viewSwap(data.view);
 
-  if (data.entries.length !== 0) {
-    toggleNoEntries();
-  }
+  toggleNoEntries();
 });
 
 const $dataViews = document.querySelectorAll('.view');
@@ -147,9 +145,7 @@ $form.addEventListener('submit', e => {
 
   viewSwap('entries');
 
-  if (data.entries.length === 0) {
-    toggleNoEntries();
-  }
+  toggleNoEntries();
 
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
 
