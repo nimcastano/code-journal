@@ -42,6 +42,16 @@ const renderEntry = entry => {
 
 const $ul = document.querySelector('ul');
 
+const $noEntries = document.querySelector('.no-entry');
+
+const toggleNoEntries = () => {
+  if ($noEntries.className === 'no-entry') {
+    $noEntries.className = 'no-entry hidden';
+  } else {
+    $noEntries.className = 'no-entry';
+  }
+};
+
 document.addEventListener('DOMContentLoaded', e => {
   for (let i = 0; i < data.entries.length; i++) {
     const $child = renderEntry(data.entries[i]);
@@ -50,20 +60,10 @@ document.addEventListener('DOMContentLoaded', e => {
 
   viewSwap(data.view);
 
-  if (data.entrieslength === 0) {
+  if (data.entries.length !== 0) {
     toggleNoEntries();
   }
 });
-
-const $noEntries = document.querySelector('.no-entry');
-
-const toggleNoEntries = () => {
-  if ($noEntries.className === 'no-entry') {
-    $noEntries.classList.add('hidden');
-  } else {
-    $noEntries.className = 'no-entry';
-  }
-};
 
 const $dataViews = document.querySelectorAll('.view');
 
@@ -111,7 +111,7 @@ $form.addEventListener('submit', e => {
 
   viewSwap('entries');
 
-  if (data.entries.length !== 0) {
+  if (data.entries.length === 0) {
     toggleNoEntries();
   }
 
