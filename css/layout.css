@@ -45,4 +45,8 @@
   .column-half {
     width: 50%;
   }
+
+  .column-third {
+    width: 15.9%;
+  }
 }
