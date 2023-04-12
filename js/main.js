@@ -1,6 +1,8 @@
 const $photoUrl = document.querySelector('#photo-url');
 const $img = document.querySelector('img');
 
+const $deleteButton = document.querySelector('.delete-button');
+
 $photoUrl.addEventListener('input', e => {
   $img.setAttribute('src', e.target.value);
 });
@@ -96,6 +98,7 @@ const $entryFormAnchor = document.querySelector('.entry-form-anchor');
 
 $entryFormAnchor.addEventListener('click', e => {
   viewSwap('entry-form');
+  $deleteButton.className = 'delete-button invisible';
 });
 
 const $form = document.querySelector('#entry-form');
@@ -162,6 +165,8 @@ $ul.addEventListener('click', e => {
 
     const $formTitle = document.querySelector('.form-title');
     $formTitle.textContent = 'Edit Entry';
+
+    $deleteButton.className = 'delete-button';
 
     for (let i = 0; i < data.entries.length; i++) {
       if (data.entries[i].entryId === $dataEntryId) {
