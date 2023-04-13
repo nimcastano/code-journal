@@ -147,13 +147,17 @@ $form.addEventListener('submit', e => {
       entryId: Number(data.editing.entryId)
     };
 
-    const dataEntriesIndex = data.entries.length - data.editing.entryId;
+    const indexFinder = el => {
+      return el.entryId === data.editing.entryId;
+    };
 
-    data.entries[dataEntriesIndex] = inputObj;
+    const indexFound = data.entries.findIndex(indexFinder);
+
+    data.entries[indexFound] = inputObj;
 
     const $newLi = renderEntry(inputObj);
 
-    $ul.replaceChild($newLi, $ul.childNodes[dataEntriesIndex]);
+    $ul.replaceChild($newLi, $ul.childNodes[indexFound]);
 
     const $formTitle = document.querySelector('.form-title');
     $formTitle.textContent = 'New Entry';
