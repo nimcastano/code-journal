@@ -2,6 +2,7 @@ const $photoUrl = document.querySelector('#photo-url');
 const $img = document.querySelector('img');
 
 const $deleteButton = document.querySelector('.delete-button');
+const $formTitle = document.querySelector('.form-title');
 
 $photoUrl.addEventListener('input', e => {
   $img.setAttribute('src', e.target.value);
@@ -90,8 +91,13 @@ const viewSwap = view => {
 
 const $entriesAnchor = document.querySelector('.entries-anchor');
 
+const $form = document.querySelector('#entry-form');
+
 $entriesAnchor.addEventListener('click', e => {
   viewSwap('entries');
+  data.editing = null;
+  $form.reset();
+  $formTitle.textContent = 'New Entry';
 });
 
 const $entryFormAnchor = document.querySelector('.entry-form-anchor');
@@ -99,9 +105,9 @@ const $entryFormAnchor = document.querySelector('.entry-form-anchor');
 $entryFormAnchor.addEventListener('click', e => {
   viewSwap('entry-form');
   $deleteButton.className = 'delete-button invisible';
+  $form.reset();
+  $formTitle.textContent = 'New Entry';
 });
-
-const $form = document.querySelector('#entry-form');
 
 $form.addEventListener('submit', e => {
 
@@ -123,6 +129,14 @@ $form.addEventListener('submit', e => {
 
     $ul.prepend($newEntry);
 
+    viewSwap('entries');
+
+    toggleNoEntries();
+
+    $img.setAttribute('src', 'images/placeholder-image-square.jpg');
+
+    $form.reset();
+
   } else {
 
     const inputObj = {
@@ -143,16 +157,12 @@ $form.addEventListener('submit', e => {
     const $formTitle = document.querySelector('.form-title');
     $formTitle.textContent = 'New Entry';
 
+    viewSwap('entries');
+
     data.editing = null;
+
   }
 
-  viewSwap('entries');
-
-  toggleNoEntries();
-
-  $img.setAttribute('src', 'images/placeholder-image-square.jpg');
-
-  $form.reset();
 });
 
 $ul.addEventListener('click', e => {
@@ -163,7 +173,6 @@ $ul.addEventListener('click', e => {
 
     viewSwap('entry-form');
 
-    const $formTitle = document.querySelector('.form-title');
     $formTitle.textContent = 'Edit Entry';
 
     $deleteButton.className = 'delete-button';
@@ -181,3 +190,22 @@ $ul.addEventListener('click', e => {
     }
   }
 });
+
+const $cancelButton = document.querySelector('.cancel-button');
+// const $confirmButton = document.querySelector('.confirmButton');
+const $modalContainer = document.querySelector('#modal-container');
+
+$deleteButton.addEventListener('click', e => {
+  $modalContainer.className = 'modal-container';
+});
+
+$cancelButton.addEventListener('click', e => {
+  $modalContainer.className = 'modal-container hidden';
+});
+
+// $confirmButton.addEventListener('click', e => {
+//   const indexFinder = el => {
+//     (el.title ===
+//   }
+//   data.entries
+// });
