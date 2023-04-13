@@ -98,6 +98,7 @@ $entriesAnchor.addEventListener('click', e => {
   data.editing = null;
   $form.reset();
   $formTitle.textContent = 'New Entry';
+  toggleNoEntries();
 });
 
 const $entryFormAnchor = document.querySelector('.entry-form-anchor');
@@ -192,7 +193,7 @@ $ul.addEventListener('click', e => {
 });
 
 const $cancelButton = document.querySelector('.cancel-button');
-// const $confirmButton = document.querySelector('.confirmButton');
+const $confirmButton = document.querySelector('.confirm-button');
 const $modalContainer = document.querySelector('#modal-container');
 
 $deleteButton.addEventListener('click', e => {
@@ -203,9 +204,28 @@ $cancelButton.addEventListener('click', e => {
   $modalContainer.className = 'modal-container hidden';
 });
 
-// $confirmButton.addEventListener('click', e => {
-//   const indexFinder = el => {
-//     (el.title ===
-//   }
-//   data.entries
-// });
+$confirmButton.addEventListener('click', e => {
+  const indexFinder = el => {
+    return el.entryId === data.editing.entryId;
+  };
+  const indexFound = data.entries.findIndex(indexFinder);
+
+  const $liElements = document.querySelectorAll('li');
+
+  data.entries.splice(indexFound, 1);
+
+  for (let i = 0; i < $liElements.length; i++) {
+    const element = $liElements[i];
+    const thisElId = Number(element.getAttribute('data-entry-id'));
+    if (thisElId === data.editing.entryId) {
+      element.remove();
+    }
+  }
+
+  toggleNoEntries();
+
+  $modalContainer.className = 'modal-container hidden';
+
+  viewSwap('entries');
+
+});
